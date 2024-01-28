@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from ml import *
 
 # Fungsi untuk membaca data dari file CSV
 def load_data(kelas):
