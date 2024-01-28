@@ -6,6 +6,7 @@ from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
 from sklearn.metrics import mean_squared_error, r2_score
+import matplotlib.pyplot as plt
 
 # Fungsi untuk membaca data dari file CSV dan membagi menjadi fitur dan target
 def read_data(file_path, target_column='2'):
@@ -43,13 +44,14 @@ def train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_te
         'R-squared (Validation)': r2_val,
         'MSE (Test)': mse_test,
         'R-squared (Test)': r2_test,
+        'Predictions (Validation)': y_val_pred,
+        'Predictions (Test)': y_test_pred
     }
 
-# Fungsi untuk membaca dataset dan melakukan pembelajaran secara bertahap
-def train_models_incrementally():
+# Fungsi untuk membaca dataset dan melakukan pembelajaran
+def train_models():
     # Nama file dataset
-    datasets = ["dummy-ml-semester2.csv", "dummy-ml-semester3.csv", "dummy-ml-semester4.csv",
-                "dummy-ml-semester5.csv", "dummy-ml-semester6.csv", "dummy-ml-semester7.csv"]
+    dataset = "dummy-ml-semester2.csv"
 
     # Inisialisasi model
     models = {
@@ -60,25 +62,40 @@ def train_models_incrementally():
         'CatBoost': CatBoostRegressor(silent=True),
     }
 
-    for i, dataset in enumerate(datasets):
-        print(f"\nTraining Model using {dataset}")
+    print(f"\nTraining Models using {dataset}")
 
-        # Membaca dataset
-        X, y = read_data(dataset, target_column=str(i + 2))
+    # Membaca dataset
+    X, y = read_data(dataset)
 
-        # Membagi data menjadi data latih, data validasi, dan data uji
-        X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
-        X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
+    # Membagi data menjadi data latih, data validasi, dan data uji
+    X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
 
-        # Melatih dan mengevaluasi setiap model
-        for model_name, model in models.items():
-            print(f"\nModel: {model_name}")
-            results = train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)
+    # Melatih dan mengevaluasi setiap model
+    for model_name, model in models.items():
+        print(f"\nModel: {model_name}")
+        results = train_and_evaluate_model(model, X_train, y_train, X_val, y_val, X_test, y_test)
 
-            # Menampilkan hasil evaluasi
-            for metric, value in results.items():
-                print(f"{metric}: {value}")
+        # Menampilkan hasil evaluasi
+        for metric, value in results.items():
+            print(f"{metric}: {value}")
 
+        # Plot hasil prediksi pada data validasi dan data uji
+        plt.figure(figsize=(12, 4))
+        plt.subplot(1, 2, 1)
+        plt.scatter(y_val, results['Predictions (Validation)'])
+        plt.title(f"{model_name} - Validation Set")
+        plt.xlabel("True Values")
+        plt.ylabel("Predictions")
+
+        plt.subplot(1, 2, 2)
+        plt.scatter(y_test, results['Predictions (Test)'])
+        plt.title(f"{model_name} - Test Set")
+        plt.xlabel("True Values")
+        plt.ylabel("Predictions")
+
+        plt.tight_layout()
+        plt.show()
 
 if __name__ == "__main__":
-    train_models_incrementally()
+    train_models()
