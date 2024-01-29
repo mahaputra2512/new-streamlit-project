@@ -76,7 +76,7 @@ def display_data(data, semester):
                 'Prediksi Nilai IPS': top_three_predictions
             })
 
-            st.subheader("Prediksi Peraih Sanapati Cendekia Semester 2")
+            st.subheader(f"Prediksi Peraih Sanapati Cendekia Semester {next_semester}")
             st.table(top_three_table)
 
 def main():

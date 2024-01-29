@@ -5,7 +5,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 import joblib
 
-def read_data(file_path, target_column='7', feature_columns=None):
+def read_data(file_path, target_column='2', feature_columns=None):
     df = pd.read_csv(file_path)
 
     # Jika feature_columns tidak ditentukan, ambil semua kolom kecuali target_column
@@ -15,6 +15,7 @@ def read_data(file_path, target_column='7', feature_columns=None):
     X = df[feature_columns]  # Fitur
     y = df[target_column]    # Target
     return X, y
+    
 
 def train_and_evaluate_model(X_train, y_train, X_val, y_val, X_test, y_test, model_save_path="linear_regression_model.joblib"):
     # Inisialisasi model Linear Regression
