@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from ml import *
+from linear_regression import train_and_evaluate_model, read_data
 
 # Fungsi untuk membaca data dari file CSV
 def load_data(kelas):
@@ -31,11 +31,24 @@ def display_data(data, semester):
     top_three = data.nlargest(3, str(semester))[['nama', str(semester)]]
     st.table(top_three)
 
-    # Menambahkan tombol untuk prediksi semester selanjutnya
+# Menambahkan tombol untuk prediksi semester selanjutnya
     if semester < 7:
         if st.button("Prediksi Si Ciamik"):
             next_semester = semester + 1
-            st.success(f"Prediksi Grafik dan Top 3 Nilai Tertinggi Semester {next_semester}")
+
+            # Menggunakan model linear regression untuk prediksi
+            model = train_and_evaluate_model(X_train, y_train, X_val, y_val, X_test, y_test)['model']
+
+            # Membaca data IPS untuk prediksi
+            X_new_data = data[[str(i) for i in range(1, next_semester)]]
+
+            # Melakukan prediksi
+            predictions = model.predict(X_new_data)
+
+            # Menampilkan hasil prediksi
+            st.subheader(f"Prediksi Nilai IPS Semester {next_semester}")
+            st.write("Nama Taruna:", data['nama'].tolist())
+            st.write("Prediksi Nilai IPS:", predictions)
 
 def main():
     st.title("Aplikasi Monitoring IPK dan Mentoring Akademik")
