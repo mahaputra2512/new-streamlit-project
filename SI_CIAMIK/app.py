@@ -60,7 +60,11 @@ def display_data(data, semester):
                 'Prediksi Nilai IPS': predictions.tolist()
             })
 
-            st.table(predictions_table)
+            fig, ax = plt.subplots()
+            predictions_table.plot(kind='bar', x='Nama', y='Prediksi Nilai IPS', ax=ax, legend=False)
+            ax.set_ylabel("Prediksi Nilai IPS")
+            ax.set_xlabel("Nama Taruna")
+            st.pyplot(fig)
 
             # Menampilkan top 3 nilai tertinggi
             top_three_indices = predictions.argsort()[-3:][::-1]
