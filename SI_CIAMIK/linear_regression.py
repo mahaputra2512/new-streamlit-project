@@ -30,6 +30,9 @@ def train_model():
         "dataset-prediksi-sem7.csv"
     ]
 
+    # Inisialisasi model Linear Regression
+    model = LinearRegression()
+
     for dataset in datasets:
         # Membaca dataset
         target_column = 'ips-next'
@@ -40,9 +43,6 @@ def train_model():
         # Membagi data menjadi data latih, data validasi, dan data uji
         X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
         X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
-
-        # Inisialisasi model Linear Regression
-        model = LinearRegression()
 
         # Latih model
         model.fit(X_train, y_train)

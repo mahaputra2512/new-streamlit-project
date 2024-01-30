@@ -9,13 +9,13 @@ def create_dummy_dataset(num_samples=100):
     # Inisialisasi kolom-kolom dataset
     dataset = pd.DataFrame({
         'nama': taruna_names,
-        '1': [random.uniform(3.0, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 1
-        '2': [random.uniform(2.5, 3.9) for _ in range(num_samples)],  # Nilai IPS Semester 2
-        '3': [random.uniform(3.1, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 3
-        '4': [random.uniform(3.4, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 4
-        '5': [random.uniform(3.2, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 5
-        '6': [random.uniform(3.5, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 6
-        '7': [random.uniform(3.5, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 7
+        '1': [random.uniform(3.7, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 1
+        '2': [random.uniform(3.5, 3.7) for _ in range(num_samples)],  # Nilai IPS Semester 2
+        '3': [random.uniform(3.75, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 3
+        '4': [random.uniform(3.8, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 4
+        '5': [random.uniform(3.85, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 5
+        '6': [random.uniform(3.9, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 6
+        '7': [random.uniform(3.95, 4.0) for _ in range(num_samples)],  # Nilai IPS Semester 7
     })
 
     # Hitung nilai IPK (rata-rata dari Semester 1-7)
