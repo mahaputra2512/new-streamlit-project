@@ -46,7 +46,7 @@ def display_data(data, semester):
             print(X_new_data)
 
             # Melakukan prediksi
-            model_path = "linear_regression_model.joblib"
+            model_path = "mlp_regressor_model.joblib"
             model = joblib.load(model_path)
             predictions = model.predict(X_new_data)
 
