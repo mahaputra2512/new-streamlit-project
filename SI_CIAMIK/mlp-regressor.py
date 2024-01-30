@@ -2,6 +2,7 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 import joblib
 
@@ -21,7 +22,7 @@ def read_data(file_path, target_column='ips-next', feature_columns=None):
     return X, y
 
 def train_model():
-    model = MLPRegressor(hidden_layer_sizes=(32, 32, 32), max_iter=100, random_state=42, solver='adam', early_stopping=True, n_iter_no_change=10)
+    model = MLPRegressor(hidden_layer_sizes=(32, 32, 32), max_iter=100, random_state=42, solver='lbfgs', early_stopping=True, n_iter_no_change=10)
     datasets = [
         "dataset-prediksi-sem2.csv",
         "dataset-prediksi-sem3.csv",
@@ -79,11 +80,25 @@ def train_model():
         plt.xlabel("True Values")
         plt.ylabel("Predictions")
 
+                # Grafik Residual
+        plt.subplot(1, 3, 2)
+        residuals = y_test - y_test_pred
+        plt.scatter(y_test_pred, residuals)
+        plt.title("Residual Plot")
+        plt.xlabel("Predictions")
+        plt.ylabel("Residuals")
+
+        # Grafik Normalitas Residual
+        plt.subplot(1, 3, 3)
+        sns.histplot(residuals, kde=True)
+        plt.title("Residual Normality Plot")
+        plt.xlabel("Residuals")
+
         plt.tight_layout()
         plt.show()
 
         # Setelah pelatihan selesai, simpan model
-        model_save_path = f"mlp_regressor_model_{dataset.split('-')[2].split('.')[0]}.joblib"
+        model_save_path = "mlp_regressor_model.joblib"
         joblib.dump(model, model_save_path)
 
 if __name__ == "__main__":
