@@ -40,7 +40,8 @@ def display_data(data, semester):
             next_semester = semester + 1
             st.success(f"Prediksi Grafik dan Peraih Sanapati Cendekia Semester {next_semester}")
 
-            X_new_data = data[[str(semester)]]
+            X_new_data = pd.DataFrame(columns=['ips-now'])
+            X_new_data['ips-now']= data[[str(semester)]]
             print("Ini:")
             print(X_new_data)
 
