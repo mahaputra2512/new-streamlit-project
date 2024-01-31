@@ -1,37 +1,40 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Graph from "./components/Graph";
 import TopThreeTable from "./components/TopThreeTable";
 import Predictions from "./components/Predictions";
 import Dropdown from "./components/Dropdown";
 
 function App() {
-  // State untuk menyimpan kelas dan semester yang dipilih
   const [selectedClass, setSelectedClass] = useState("4RKSBLUE");
   const [selectedSemester, setSelectedSemester] = useState(1);
+  const [data, setData] = useState(null); // State untuk menyimpan data
 
-  // Mendapatkan data dari backend (misalnya, Flask API)
+  useEffect(() => {
+    fetchData(); // Panggil fetchData saat komponen pertama kali di-mount
+  }, []); // [] sebagai dependencies agar useEffect hanya dijalankan sekali
+
   const fetchData = async () => {
-    // Implementasikan sesuai kebutuhan Anda
-    // Gunakan fetch atau library Axios untuk mengambil data dari backend
-    // Contoh menggunakan fetch:
     try {
-      const response = await fetch(`backend-api-url?kelas=${selectedClass}&semester=${selectedSemester}`);
-      const data = await response.json();
-
-      // Lakukan sesuatu dengan data (misalnya, simpan di state)
-      // Implementasikan sesuai kebutuhan Anda
+      const response = await fetch(`http://localhost:5000/fetch_data`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          kelas: selectedClass,
+          semester: selectedSemester,
+        }),
+      });
+      const fetchedData = await response.json();
+      setData(fetchedData); // Simpan data di state
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  // Handle saat tombol "Prediksi Si Ciamik" ditekan
   const handlePredictionButtonClick = async () => {
-    // Lakukan prediksi menggunakan backend (misalnya, Flask API)
-    // Implementasikan sesuai kebutuhan Anda
-    // Pastikan untuk menyertakan kelas, semester, dan data yang diperlukan dalam request ke backend
     try {
-      const predictionResponse = await fetch(`backend-prediction-api-url`, {
+      const predictionResponse = await fetch(`http://localhost:5000/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,9 +47,9 @@ function App() {
       });
 
       const predictionData = await predictionResponse.json();
-
-      // Lakukan sesuatu dengan hasil prediksi (misalnya, simpan di state atau komponen lain)
+      // Lakukan sesuatu dengan hasil prediksi (misalnya, simpan di state)
       // Implementasikan sesuai kebutuhan Anda
+      console.log("Prediction Data:", predictionData);
     } catch (error) {
       console.error("Error fetching prediction data:", error);
     }
@@ -56,7 +59,6 @@ function App() {
     <div>
       <h1>Aplikasi Monitoring IPK dan Mentoring Akademik</h1>
 
-      {/* Dropdown untuk memilih kelas */}
       <Dropdown
         label="Pilih Kelas"
         options={[
@@ -69,7 +71,6 @@ function App() {
         onSelect={setSelectedClass}
       />
 
-      {/* Dropdown untuk memilih semester */}
       <Dropdown
         label="Pilih Semester"
         options={[1, 2, 3, 4, 5, 6, 7]}
@@ -77,24 +78,17 @@ function App() {
         onSelect={setSelectedSemester}
       />
 
-      {/* Button untuk memuat data */}
       <button onClick={fetchData}>Muat Data</button>
 
-      {/* Komponen Graph */}
-      <Graph />
+      <Graph data={data} semester={selectedSemester} />
 
-      {/* Komponen TopThreeTable */}
-      <TopThreeTable />
+      <TopThreeTable data={data} semester={selectedSemester} />
 
-      {/* Button untuk prediksi */}
       {selectedSemester < 7 && (
-        <button onClick={handlePredictionButtonClick}>Prediksi Si Ciamik</button>
+        <Predictions handlePrediction={handlePredictionButtonClick} />
       )}
-
-      {/* Komponen Predictions */}
-      <Predictions />
     </div>
   );
-};
+}
 
 export default App;

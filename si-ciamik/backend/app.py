@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import pandas as pd
+import joblib
 
 app = Flask(__name__)
 
@@ -19,11 +20,8 @@ def fetch_data():
     # Memuat data dari file CSV
     data = load_data(kelas)
 
-    # Lakukan sesuatu dengan hasil prediksi (misalnya, tampilkan di state atau komponen lain)
-    # Implementasikan sesuai kebutuhan Anda
-
     # Kirim data sebagai respons JSON
-    return jsonify(data.to_dict(orient='records'))
+    return jsonify(data.to_dict(orient='records'))  # Mengubah format data sesuai kebutuhan frontend
 
 # Definisikan route untuk prediksi
 @app.route('/predict', methods=['POST'])
@@ -31,11 +29,10 @@ def predict():
     # Ambil data dari frontend (Anda perlu menyesuaikan ini sesuai kebutuhan)
     data = request.get_json()
 
+    model = joblib.load('mlp_regressor_model.joblib')
+    
     # Lakukan prediksi menggunakan model (gantilah dengan model yang Anda miliki)
-    # predictions = model.predict(data['ips-now'])
-
-    # Misalnya, kita mengembalikan contoh jawaban
-    predictions = [4.0, 3.7, 3.5]
+    predictions = model.predict(data['ips-now'])
 
     return jsonify(predictions)
 
