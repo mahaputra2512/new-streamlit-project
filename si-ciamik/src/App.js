@@ -26,6 +26,7 @@ function App() {
         }),
       });
       const fetchedData = await response.json();
+      console.log(fetchData);
       setData(fetchedData); // Simpan data di state
     } catch (error) {
       console.error("Error fetching data:", error);
