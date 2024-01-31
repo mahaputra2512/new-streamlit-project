@@ -27,28 +27,69 @@ def editing_ips():
     # Tampilkan seluruh data taruna sebelum diedit
     st.write("Seluruh Data Taruna Sebelum Diedit:", df)
     
-    # Pilihan nama taruna
-    selected_name = st.selectbox("Pilih Nama Taruna", df["nama"].tolist())
+    # Pilihan aksi
+    action = st.radio("Pilih Aksi", ["Edit Data", "Tambah Data", "Hapus Data"])
     
-    # Pilihan kolom untuk diedit
-    selected_column = st.selectbox("Pilih Kolom yang Ingin Diedit", df.columns[1:-1])
+    if action == "Edit Data":
+        # Pilihan nama taruna
+        selected_name = st.selectbox("Pilih Nama Taruna", df["nama"].tolist())
+        
+        # Pilihan kolom untuk diedit
+        selected_column = st.selectbox("Pilih Kolom yang Ingin Diedit", df.columns[1:-1])
+        
+        # Input nilai IPS baru
+        new_ips = st.number_input(f"Masukkan Nilai IPS Baru untuk {selected_column}", min_value=0.0, max_value=4.0, step=0.01)
+        
+        # Simpan perubahan saat tombol "Simpan Perubahan" ditekan
+        if st.button("Simpan Perubahan"):
+            # Update nilai IPS pada data
+            df.loc[df["nama"] == selected_name, selected_column] = new_ips
+            
+            # Hitung nilai IPK baru
+            df["ipk"] = df.iloc[:, 1:-1].mean(axis=1)
+            
+            # Simpan perubahan ke file .csv
+            save_data(df, file_path)
+            
+            # Tampilkan notifikasi
+            st.success("Perubahan berhasil disimpan!")
     
-    # Input nilai IPS baru
-    new_ips = st.number_input(f"Masukkan Nilai IPS Baru untuk {selected_column}", min_value=0.0, max_value=4.0, step=0.01)
+    elif action == "Tambah Data":
+        # Input data baru
+        new_name = st.text_input("Masukkan Nama Taruna Baru")
+        new_ips_values = st.text_input("Masukkan Nilai IPS (pisahkan dengan koma)")
+        
+        # Simpan perubahan saat tombol "Tambah Data" ditekan
+        if st.button("Tambah Data"):
+            # Pisahkan nilai IPS yang dimasukkan
+            new_ips_list = [float(value.strip()) for value in new_ips_values.split(",")]
+            
+            # Buat data baru
+            new_data = pd.DataFrame({"nama": [new_name], **{f"{i+1}": [ips] for i, ips in enumerate(new_ips_list)}, "ipk": [sum(new_ips_list) / len(new_ips_list)]})
+            
+            # Tambahkan data baru ke dataframe utama
+            df = pd.concat([df, new_data], ignore_index=True)
+            
+            # Simpan perubahan ke file .csv
+            save_data(df, file_path)
+            
+            # Tampilkan notifikasi
+            st.success("Data baru berhasil ditambahkan!")
     
-    # Simpan perubahan saat tombol "Simpan Perubahan" ditekan
-    if st.button("Simpan Perubahan"):
-        # Update nilai IPS pada data
-        df.loc[df["nama"] == selected_name, selected_column] = new_ips
+    elif action == "Hapus Data":
+        # Pilihan nama taruna untuk dihapus
+        selected_name_to_delete = st.selectbox("Pilih Nama Taruna yang Ingin Dihapus", df["nama"].tolist())
         
-        # Hitung nilai IPK baru
-        df["ipk"] = df.iloc[:, 1:-1].mean(axis=1)
-        
-        # Simpan perubahan ke file .csv
-        save_data(df, file_path)
-        
-        # Tampilkan notifikasi
-        st.success("Perubahan berhasil disimpan!")
+        # Simpan perubahan saat tombol "Hapus Data" ditekan
+        if st.button("Hapus Data"):
+            # Hapus baris dengan nama terpilih
+            df = df[df["nama"] != selected_name_to_delete]
+            
+            # Simpan perubahan ke file .csv
+            save_data(df, file_path)
+            
+            # Tampilkan notifikasi
+            st.success("Data berhasil dihapus!")
 
 if __name__:
     editing_ips()
