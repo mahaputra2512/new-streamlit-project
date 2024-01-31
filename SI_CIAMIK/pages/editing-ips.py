@@ -11,7 +11,16 @@ def load_data(file_path):
 def save_data(data, file_path):
     data.to_csv(file_path, index=False)
 
+def authenticate():
+    password = st.text_input("Masukkan Password:", type="password")
+    return password == "password123"  # Ganti dengan password yang diinginkan
+
 def editing_ips():
+    authenticated = authenticate()
+    
+    while not authenticated:
+        st.warning("Password salah. Silakan coba lagi.")
+        authenticated = authenticate()
     st.title("Edit Data IPS")
     
     # Pilihan file .csv
