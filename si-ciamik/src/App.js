@@ -7,11 +7,17 @@ import Dropdown from "./components/Dropdown";
 function App() {
   const [selectedClass, setSelectedClass] = useState("4RKSBLUE");
   const [selectedSemester, setSelectedSemester] = useState(1);
-  const [data, setData] = useState(null); // State untuk menyimpan data
+  const [data, setData] = useState({}); // State untuk menyimpan data
 
   useEffect(() => {
     fetchData(); // Panggil fetchData saat komponen pertama kali di-mount
+    setData(fetchData);
   }, []); // [] sebagai dependencies agar useEffect hanya dijalankan sekali
+
+  useEffect(() => {
+    // Ini akan dijalankan setiap kali nilai data berubah
+    console.log("Data Updated:", data);
+  }, [data]);
 
   const fetchData = async () => {
     try {
@@ -26,8 +32,8 @@ function App() {
         }),
       });
       const fetchedData = await response.json();
-      console.log(fetchData);
-      setData(fetchedData); // Simpan data di state
+      console.log(fetchedData); 
+      return fetchedData;
     } catch (error) {
       console.error("Error fetching data:", error);
     }

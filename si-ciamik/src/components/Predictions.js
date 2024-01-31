@@ -1,6 +1,6 @@
 import React from "react";
 
-const Predictions = (handlePrediction) => {
+const Predictions = ({handlePrediction}) => {
   return (
     <div>
       <h3>Prediksi Si Ciamik</h3>

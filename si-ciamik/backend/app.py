@@ -34,6 +34,7 @@ def predict():
     model = joblib.load('mlp_regressor_model.joblib')
     
     # Lakukan prediksi menggunakan model (gantilah dengan model yang Anda miliki)
+    print(data)
     predictions = model.predict(data['ips-now'])
 
     return jsonify(predictions)
