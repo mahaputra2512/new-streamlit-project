@@ -12,47 +12,43 @@ def save_data(data, file_path):
     data.to_csv(file_path, index=False)
 
 def editing_ips():
-    # Menampilkan judul
-    st.title("Edit Data CSV dengan Streamlit")
-
-    # Direktori tempat data CSV disimpan
-    data_directory = "data"
-
-    # Membaca semua file CSV dari direktori data/
-    files = [f for f in os.listdir(data_directory) if f.endswith(".csv")]
-
-    # Memilih file dari daftar file
-    selected_file = st.selectbox("Pilih file CSV", files)
-
-    # Membaca data dari file CSV yang dipilih
-    file_path = os.path.join(data_directory, selected_file)
+    st.title("Edit Data IPS")
+    
+    # Pilihan file .csv
+    selected_file = st.selectbox("Pilih File CSV", ["4RKSBLUE.csv", "4RKSRED.csv", "4RPLK.csv", "4RPK.csv", "4RSK.csv",
+                                                    "3RKSECHO.csv", "3RKSROUTE.csv", "3RKSTRACE.csv", "3RPLK.csv", "3RPK.csv", "3RSK.csv",
+                                                    "2RKSA.csv", "2RKSB.csv", "2RPLK.csv", "2RPK.csv", "2RSKA.csv", "2RSKB.csv",
+                                                    "1RKSA.csv", "1RKSB.csv", "1RKSC.csv", "1RPLK.csv", "1RPK.csv", "1RSK.csv"])
+    
+    # Baca data dari file .csv
+    file_path = os.path.join("data", selected_file)
     df = load_data(file_path)
-
-    # Memilih nama taruna
+    
+    # Tampilkan seluruh data taruna sebelum diedit
+    st.write("Seluruh Data Taruna Sebelum Diedit:", df)
+    
+    # Pilihan nama taruna
     selected_name = st.selectbox("Pilih Nama Taruna", df["nama"].tolist())
-
-    # Memilih kolom
-    selected_column = st.selectbox("Pilih Kolom", df.columns[1:-1])
-
-    # Menampilkan form untuk mengubah nilai IPS
-    new_ips = st.number_input(f"Masukkan nilai IPS untuk {selected_column}", value=df[df["nama"]==selected_name][selected_column].values[0])
-
-    # Menyimpan perubahan jika tombol ditekan
+    
+    # Pilihan kolom untuk diedit
+    selected_column = st.selectbox("Pilih Kolom yang Ingin Diedit", df.columns[1:-1])
+    
+    # Input nilai IPS baru
+    new_ips = st.number_input(f"Masukkan Nilai IPS Baru untuk {selected_column}", min_value=0.0, max_value=4.0, step=0.01)
+    
+    # Simpan perubahan saat tombol "Simpan Perubahan" ditekan
     if st.button("Simpan Perubahan"):
-        # Memperbarui nilai IPS pada DataFrame
-        df.loc[df["nama"]==selected_name, selected_column] = new_ips
+        # Update nilai IPS pada data
+        df.loc[df["nama"] == selected_name, selected_column] = new_ips
         
-        # Menghitung IPK baru
+        # Hitung nilai IPK baru
         df["ipk"] = df.iloc[:, 1:-1].mean(axis=1)
         
-        # Menyimpan perubahan ke file CSV
+        # Simpan perubahan ke file .csv
         save_data(df, file_path)
         
+        # Tampilkan notifikasi
         st.success("Perubahan berhasil disimpan!")
-        
-        # Menampilkan data terbaru
-        st.write("Data terbaru:")
-        st.table(df)
 
 if __name__:
     editing_ips()
