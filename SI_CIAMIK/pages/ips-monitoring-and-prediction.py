@@ -11,11 +11,11 @@ def load_data(kelas):
 
 # Fungsi untuk menampilkan grafik dan daftar 3 nilai tertinggi
 def display_data(data, semester):
-    st.subheader("Grafik Indeks Prestasi Semester (IPS)")
+    st.subheader("Semester Grade Point Average (GPA) Chart")
 
     # Periksa apakah kolom semester yang dipilih ada dalam data
     if str(semester) not in data.columns:
-        st.error("Data IPS tidak ditemukan, kelas Anda belum ujian!")
+        st.error("Data GPA tidak ditemukan, kelas Anda belum ujian!")
         return
     
     print("Cek data semester:")
@@ -24,11 +24,11 @@ def display_data(data, semester):
     # Membuat grafik batang
     fig, ax = plt.subplots()
     data.plot(kind='bar', x='nama', y=str(semester), ax=ax, legend=False)
-    ax.set_ylabel("IPS")
-    ax.set_xlabel("Nama Taruna")
+    ax.set_ylabel("GPA")
+    ax.set_xlabel("Cadet's name")
     st.pyplot(fig)
 
-    st.subheader("Peraih Sanapati Cendekia")
+    st.subheader("Sanapati Cendekia")
 
     # Menampilkan 3 nilai tertinggi
     top_three = data.nlargest(3, str(semester))[['nama', str(semester)]]
@@ -36,9 +36,9 @@ def display_data(data, semester):
 
 # Menambahkan tombol untuk prediksi semester selanjutnya
     if semester < 7:
-        if st.button("Prediksi Si Ciamik"):
+        if st.button("Predict Next Semester GPA"):
             next_semester = semester + 1
-            st.success(f"Prediksi Grafik dan Peraih Sanapati Cendekia Semester {next_semester}")
+            st.success(f"Graphic Predictions dan Sanapati Cendekia Winners in Semester {next_semester}")
 
             X_new_data = pd.DataFrame(columns=['ips-now'])
             X_new_data['ips-now']= data[[str(semester)]]
@@ -46,25 +46,25 @@ def display_data(data, semester):
             print(X_new_data)
 
             # Melakukan prediksi
-            model_path = "mlp_regressor_model.joblib"
+            model_path = "MLPRegressor-8neurons-7depth.joblib"
             model = joblib.load(model_path)
             predictions = model.predict(X_new_data)
 
-            print("Prediction:")
+            print("Predictions:")
             print(predictions)
 
             # Menampilkan hasil prediksi
-            st.subheader(f"Prediksi Nilai IPS Semester {next_semester}")
+            st.subheader(f"Semester {next_semester} Grade Point Average (GPA) Prediction")
             # Menampilkan hasil prediksi dalam bentuk tabel
             predictions_table = pd.DataFrame({
-                'Nama': data['nama'].tolist(),
-                'Prediksi Nilai IPS': predictions.tolist()
+                'Name': data['nama'].tolist(),
+                'GPA Prediction': predictions.tolist()
             })
 
             fig, ax = plt.subplots()
-            predictions_table.plot(kind='bar', x='Nama', y='Prediksi Nilai IPS', ax=ax, legend=False)
-            ax.set_ylabel("Prediksi Nilai IPS")
-            ax.set_xlabel("Nama Taruna")
+            predictions_table.plot(kind='bar', x='Name', y='GPA Prediction', ax=ax, legend=False)
+            ax.set_ylabel("GPA Prediction")
+            ax.set_xlabel("Cadet's Name")
             st.pyplot(fig)
 
             # Menampilkan top 3 nilai tertinggi
@@ -74,17 +74,17 @@ def display_data(data, semester):
 
             top_three_table = pd.DataFrame({
                 'Nama Taruna': top_three_names,
-                'Prediksi Nilai IPS': top_three_predictions
+                'Prediksi GPA': top_three_predictions
             })
 
             st.subheader(f"Prediksi Peraih Sanapati Cendekia Semester {next_semester}")
             st.table(top_three_table)
 
 def ips_monitoring_and_prediction():
-    st.title("Aplikasi Monitoring IPK dan Mentoring Akademik")
+    st.title("Semester Grade Point Average (GPA) Monitoring Website")
 
     # Dropdown untuk memilih kelas
-    kelas = st.selectbox("Pilih Kelas", [
+    kelas = st.selectbox("Choose Class", [
         "4RKSBLUE", "4RKSRED", "4RPK", "4RPLK", "4RSK",
         "3RKSECHO", "3RKSROUTE", "3RKSTRACE", "3RPK", "3RPLK", "3RSK",
         "2RKSA", "2RKSB", "2RPK", "2RPLK", "2RSKA", "2RSKB",
@@ -92,7 +92,7 @@ def ips_monitoring_and_prediction():
     ])
 
     # Dropdown untuk memilih semester
-    semester = st.selectbox("Pilih Semester", [1, 2, 3, 4, 5, 6, 7])
+    semester = st.selectbox("Choose Semester", [1, 2, 3, 4, 5, 6, 7])
 
     # Memuat data dari file CSV
     data = load_data(kelas)
