@@ -2,9 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from dotenv import load_dotenv
+from datetime import timedelta
+from dto import ItemDto, UserDTO
 import logging
 import os
 
@@ -14,25 +17,60 @@ CORS(app)
 
 #2: PENERAPAN PENGAMANAN CONNECTION STRING KE DATABASE
 load_dotenv() 
-print(os.getenv('DATABASE_URI'))
-#Konfigurasi SQLAlchemy dengan menggunakan environtment variabel
+#print(os.getenv('DATABASE_URI'))
+#Konfigurasi SQLAlchemy dengan menggunakan environtment variabel (agar aman)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Konfigurasi JWT
-app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'
-jwt = JWTManager(app)
-
-#2: PENERAPAN LOGGING
+#3: PENERAPAN LOGGING
 logging.basicConfig(filename='app.log', level=logging.INFO)
 
-# Konfigurasi Rate Limiting
+#4: PENERAPAN RATE LIMITER
 limiter = Limiter(
     app,
     key_func=get_remote_address,
     storage_uri="memory://"
 )
+
+#5: PENERAPAN JWT DENGAN REFRESH DAN REVOKE TOKEN
+# Konfigurasi JWT untuk refresh dan revoke token:
+app.config['JWT_SECRET_KEY'] = 'ihsanfati'
+app.config['JWT_BLACKLIST_ENABLED'] = True
+app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
+app.config['JWT_EXPRESS'] = timedelta(days=1)
+jwt = JWTManager(app)
+# Endpoint untuk mendapatkan token JWT
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+
+    #6 PENERAPAN VALIDASI INPUT MENGGUNAKAN DATA TRANSFER OBJECT (DTO)
+    user_dto = UserDTO(username=data.get('username'), password=data.get('password'))
+    if not user_dto.username or not user_dto.password:
+        return jsonify({'error': 'Missing username or password'}), 400
+
+    # Gantilah dengan logika otentikasi yang sesuai dengan proyek Anda
+    if user_dto.username == 'fati' and user_dto.password == 'jogja-istimewa':
+        access_token = create_access_token(user_dto.username)
+        # Menambahkan refresh token dalam respons
+        refresh_token = create_refresh_token(user_dto.username)
+        return jsonify(access_token=access_token, refresh_token=refresh_token), 200
+    else:
+        return jsonify({'error': 'Invalid username or password'}), 401
+# Endpoint untuk mendapatkan refresh token
+@app.route('/refresh', methods=['POST'])
+@jwt_required(refresh=True)
+def refresh():
+    current_user = get_jwt_identity()
+    new_access_token = create_access_token(identity=current_user)
+    return jsonify(access_token=new_access_token), 200
+# Endpoint yang memerlukan token JWT
+@app.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
 
 # Model untuk data API (ganti sesuai kebutuhan)
 class Item(db.Model):
@@ -55,7 +93,7 @@ def add_dummy_data():
 
 # Endpoint untuk mendapatkan daftar item
 @app.route('/items', methods=['GET'])
-@limiter.limit("5 per minute")  # 3: PENERAPAN RATE LIMITING
+@limiter.limit("5 per minute")  # 4: PENERAPAN RATE LIMITING
 def get_items():
     items = Item.query.all()
     items_list = [{'id': item.id, 'name': item.name} for item in items]
@@ -63,43 +101,22 @@ def get_items():
 
 # Endpoint untuk menambahkan item baru
 @app.route('/items', methods=['POST'])
-@limiter.limit("1 per day")  #3: PENERAPAN RATE LIMITING
+@limiter.limit("10 per day")  #4: PENERAPAN RATE LIMITING
 @jwt_required()  # Memerlukan token JWT
 def add_item():
     data = request.get_json()
     
-    #4: VALIDASI INPUT
+    #6: PENERAPAN VALIDASI INPUT
     if 'name' not in data:
         return jsonify({'error': 'Missing name parameter'}), 400
 
-    new_item = Item(name=data['name'])
+    #7: PENERAPAN DATA TRANSFER OBJECT (DTO)
+    item_dto = ItemDto(**data)
+    new_item = Item(name=item_dto.name)
     db.session.add(new_item)
     db.session.commit()
 
     return jsonify({'message': 'Item added successfully'}), 201
-
-# Endpoint untuk mendapatkan token JWT
-@app.route('/login', methods=['POST'])
-def login():
-    data = request.get_json()
-
-    #4 VALIDASI INPUT
-    if 'username' not in data or 'password' not in data:
-        return jsonify({'error': 'Missing username or password'}), 400
-
-    # Gantilah dengan logika otentikasi yang sesuai dengan proyek Anda
-    if data['username'] == 'example' and data['password'] == 'password':
-        access_token = create_access_token(identity=data['username'])
-        return jsonify(access_token=access_token), 200
-    else:
-        return jsonify({'error': 'Invalid username or password'}), 401
-
-# Endpoint yang memerlukan token JWT
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
 
 if __name__ == '__main__':
     with app.app_context():

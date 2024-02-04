@@ -11999,3 +11999,119 @@ INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjuta
 INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
 INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
 INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 11:47:20] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 11:47:34] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 11:47:57] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\logging\\__init__.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\Web-Api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\os.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:32:10] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:32:43] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:33:38] "[31m[1mPOST /protected HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:33:47] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:39:18] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:44:57] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:44:58] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:44:59] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:44:59] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:45:00] "GET /items HTTP/1.1" 200 -
+WARNING:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: get_items
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:45:01] "[31m[1mGET /items HTTP/1.1[0m" 429 -
+WARNING:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: get_items
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:45:01] "[31m[1mGET /items HTTP/1.1[0m" 429 -
+WARNING:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: get_items
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:45:02] "[31m[1mGET /items HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:47:59] "[31m[1mPOST /items HTTP/1.1[0m" 401 -
+WARNING:flask-limiter:ratelimit 1 per 1 day (127.0.0.1) exceeded at endpoint: add_item
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:48:04] "[31m[1mPOST /items HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 14:48:33] "GET /items HTTP/1.1" 200 -
+WARNING:flask-limiter:ratelimit 1 per 1 day (127.0.0.1) exceeded at endpoint: add_item
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:01:33] "[31m[1mPOST /items HTTP/1.1[0m" 429 -
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:05:54] "[31m[1mPOST /items HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:07:44] "[31m[1mPOST /items HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:08:22] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:08:56] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:10:01] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:10:05] "[31m[1mGET /login HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:10:09] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:10:33] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:11:15] "[31m[1mPOST /items HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:11:23] "[35m[1mPOST /items HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [04/Feb/2024 15:11:32] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
