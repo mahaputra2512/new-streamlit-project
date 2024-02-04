@@ -14,6 +14,7 @@ CORS(app)
 
 #2: PENERAPAN PENGAMANAN CONNECTION STRING KE DATABASE
 load_dotenv() 
+print(os.getenv('DATABASE_URI'))
 #Konfigurasi SQLAlchemy dengan menggunakan environtment variabel
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
