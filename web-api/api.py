@@ -80,7 +80,7 @@ class Item(db.Model):
 # Fungsi untuk menambahkan data dummy
 def add_dummy_data():
     dummy_items = [
-        {'name': 'Martabak Pelor'},
+        {'name': 'Martabak Telor'},
         {'name': 'Beng-beng drink'},
         # Tambahkan item dummy lainnya sesuai kebutuhan
     ]
@@ -117,6 +117,17 @@ def add_item():
     db.session.commit()
 
     return jsonify({'message': 'Item added successfully'}), 201
+
+@app.route('/reset_items', methods=['POST'])
+def reset_items():
+    # Hapus semua data pada tabel Item
+    Item.query.delete()
+    db.session.commit()
+
+    # Tambahkan data dummy kembali
+    add_dummy_data()
+
+    return jsonify({'message': 'Items reset successfully'}), 200
 
 if __name__ == '__main__':
     with app.app_context():
