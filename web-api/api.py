@@ -71,6 +71,19 @@ def refresh():
 def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200
+# REVOKE TOKEN:
+revoked_tokens = set()
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+    jti = jwt_payload['jti']
+    return jti in revoked_tokens
+
+@app.route('/revoke_token', methods=['DELETE'])
+@jwt_required()
+def revoke_token():
+    jti = get_jwt_identity()
+    revoked_tokens.add(jti)
+    return jsonify({'message': 'Token revoked successfully'}), 200
 
 # Model untuk data API (ganti sesuai kebutuhan)
 class Item(db.Model):

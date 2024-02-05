@@ -12133,3 +12133,44 @@ INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:43:49] "POST /reset_items HTTP/1.1" 
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:43:58] "[33mGET /tems HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:44:04] "GET /items HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:44:14] "POST /reset_items HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:49:50] "[31m[1mPOST /login HTTP/1.1[0m" 415 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:50:28] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:51:02] "[31m[1mPOST /revoke_token HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:51:14] "[35m[1mDELETE /revoke_token HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\flask_cors\\extension.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:02] "[31m[1mPOST /login HTTP/1.1[0m" 415 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:05] "[31m[1mGET /login HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:12] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:32] "DELETE /revoke_token HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:55:05] "GET /protected HTTP/1.1" 200 -
