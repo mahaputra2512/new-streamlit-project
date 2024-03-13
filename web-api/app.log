@@ -12174,3 +12174,57 @@ INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:05] "[31m[1mGET /login HTTP/1.1
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:12] "POST /login HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:54:32] "DELETE /revoke_token HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 08:55:05] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:01:15] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:01:35] "DELETE /revoke_token HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:01:55] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Detected change in 'D:\\Semester7\\Keamanan Pemrograman Lanjutan\\streamlit-projects\\web-api\\api.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:05:17] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:05:37] "DELETE /revoke_token HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:05:48] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\logging\\__init__.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:11:48] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:12:22] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:13:16] "POST /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:13:47] "POST /refresh HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:14:17] "GET /protected HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:14:50] "DELETE /revoke_token HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:13] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:26] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:27] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:27] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:28] "GET /items HTTP/1.1" 200 -
+WARNING:flask-limiter:ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: get_items
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:15:29] "[31m[1mGET /items HTTP/1.1[0m" 429 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:16:25] "[31m[1mPOST /items HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:16:33] "[35m[1mPOST /items HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [05/Feb/2024 09:16:53] "GET /items HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\LENOVO\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\dataclasses.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 460-284-670

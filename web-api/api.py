@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity
+from flask_jwt_extended import JWTManager, jwt_required, create_access_token, get_jwt_identity, get_jwt
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, get_jwt_identity
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -70,7 +70,12 @@ def refresh():
 @jwt_required()
 def protected():
     current_user = get_jwt_identity()
+    # Tambahkan pengecekan apakah token telah direvoke
+    jti = get_jwt()['jti']
+    if jti in revoked_tokens:
+        return jsonify({'error': 'Token has been revoked'}), 401
     return jsonify(logged_in_as=current_user), 200
+
 # REVOKE TOKEN:
 revoked_tokens = set()
 @jwt.token_in_blocklist_loader
@@ -83,6 +88,7 @@ def check_if_token_revoked(jwt_header, jwt_payload):
 def revoke_token():
     jti = get_jwt_identity()
     revoked_tokens.add(jti)
+    clear_revoked_tokens()  # Tambahkan ini
     return jsonify({'message': 'Token revoked successfully'}), 200
 
 # Model untuk data API (ganti sesuai kebutuhan)
@@ -142,8 +148,14 @@ def reset_items():
 
     return jsonify({'message': 'Items reset successfully'}), 200
 
+# Tambahkan fungsi untuk membersihkan data token yang direvoke sebelumnya
+def clear_revoked_tokens():
+    global revoked_tokens
+    revoked_tokens = set()
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
         add_dummy_data()
+        clear_revoked_tokens()
     app.run(debug=True)
